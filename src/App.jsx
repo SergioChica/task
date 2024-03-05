@@ -8,37 +8,32 @@ import { Cards } from './components/Cards/Cards'
 
 
 
-function App() {
-  const [count, setCount] = useState(0)
 
+function App() {
+  const myRef = useRef('')
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = () => {
+    const newTask = myRef.current.value; // Obtiene el valor del input usando current
+    setTasks([...tasks, newTask]); // Actualiza el estado de las tareas
+    myRef.current.value = ''; // Limpia el input después de añadir la tarea
+  };
+
+}
   return (
     <>
       <Main>
         <div className='containerInput'>
-            <input type="text" placeholder='Ingresa la tarea' className='inputCard' />
-            <button className='buttonCard'>Crear Tarea</button>
+            <input ref={myRef} type="text" placeholder='Ingresa la tarea' className='inputCard' />
+            <button onClick={addTask} className='buttonCard' >Crear Tarea</button>
         </div>
         <div className="containerCards">
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
+            {
+              task.map( element => <Cards>{element}</Cards>)
+            }
         </div>
       </Main>
     </>
   )
-}
 
 export default App

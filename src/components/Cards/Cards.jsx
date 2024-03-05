@@ -2,10 +2,10 @@ import React from 'react'
 import './cards.css'
 
 
-export const Cards = () => {
+export const Cards = (text) => {
   return (
     <div className='card'>
-      <p className='textCard'>Programar</p>
+      <p className='textCard'>{text}</p>
     </div>
   )
 }
