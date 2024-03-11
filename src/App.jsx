@@ -1,39 +1,61 @@
 import { useState,useRef } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
 
 import { Main } from './components/Layouts/Main/Main'
 import { Cards } from './components/Cards/Cards'
 
-
-
-
 function App() {
-  const myRef = useRef('')
-  const [tasks, setTasks] = useState([]);
+  const titleRef = useRef('')
+  const taskRef = useRef('')
+  const [tasks, setTasks] = useState([
+    // {
+    //   id:1,
+    //   title:"Barrer",
+    //   task:"La casa"
+    // }
+  ]);
+  const [taskArchive, setTaskArchive] = useState([])
+  let counter = useRef(1);
 
   const addTask = () => {
-    const newTask = myRef.current.value; // Obtiene el valor del input usando current
-    setTasks([...tasks, newTask]); // Actualiza el estado de las tareas
-    myRef.current.value = ''; // Limpia el input después de añadir la tarea
+    const title = titleRef.current.value;
+    const task = taskRef.current.value;
+    const id = counter.current++
+    setTasks([...tasks, {id,title,task}]); 
+    titleRef.current.value = ''; 
+    taskRef.current.value = ''; 
   };
 
-}
+  const addArchiveTask = (taskId) => {
+    const archivedTask = tasks.find(task => task.id === taskId);
+    setTaskArchive([...taskArchive, archivedTask]); 
+    setTasks(tasks.filter(task => task.id !== taskId)); 
+  };
+
   return (
     <>
       <Main>
-        <div className='containerInput'>
-            <input ref={myRef} type="text" placeholder='Ingresa la tarea' className='inputCard' />
-            <button onClick={addTask} className='buttonCard' >Crear Tarea</button>
+        <div className="containerButtonsAndInputs">
+          <div className="containerButtons">
+            <button className='buttons'>Ver tareas pendientes</button>
+            <button className='buttons'>Ver tareas Archivadas</button>
+            <button className='buttons'>Ver todas las tareas</button>
+          </div>
+          <div className='containerInput'>
+              <div className="inputs">
+                <input ref={titleRef} type="text" placeholder='Ingresa el titulo' className='inputCard' />
+                <textarea ref={taskRef} name="" id="" cols="30" rows="10" placeholder='Ingresa la tarea'></textarea>
+              </div>
+              <button onClick={addTask} className='buttonCard' >Crear Tarea</button>
+          </div>
         </div>
         <div className="containerCards">
             {
-              task.map( element => <Cards>{element}</Cards>)
+              tasks.map(task => <Cards key={task.id} title={task.title} text={task.task} attribute={() => addArchiveTask(task.id)} />)
             }
         </div>
       </Main>
     </>
   )
+}
 
 export default App

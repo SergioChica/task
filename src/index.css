@@ -80,15 +80,50 @@ main {
   gap: 40px;
 }
 
-.containerInput {
-  height: 100px;
+.containerButtonsAndInputs {
+  height: 44%;
+  width: 60%;
   display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  align-items: center;
   gap: 20px;
   border-bottom: 1px solid white;
 }
 
+.containerButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  width: 200px;
+}
+
+.containerInput {
+  height: 40%;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 20px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .inputCard {
   height: 50px;
+  width: 300px;
+  font-size: 18px;
+  text-indent: 10px;
+}
+
+textarea {
+  height: 190px;
   width: 300px;
   font-size: 18px;
   text-indent: 10px;
@@ -114,8 +149,8 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
   overflow-x: auto;
+  background-color: #3b3b3b;
 }
 
 .containerCards::-webkit-scrollbar {
