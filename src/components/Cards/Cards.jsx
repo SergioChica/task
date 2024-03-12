@@ -8,8 +8,9 @@ export const Cards = ({title,text, attribute}) => {
       <h2>{title}</h2>
       <p className='textCard'>{text}</p>
       <div className="containerButton">
-        <button onClick={attribute}>Archivar</button> 
+        <button className='buttonCard' onClick={attribute}>Archivar</button> 
       </div>
+      <button className="status"></button>
     </div>
   )
 }
