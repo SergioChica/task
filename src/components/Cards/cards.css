@@ -32,10 +32,3 @@ h2 {
   justify-content: end;
 }
 
-.status {
-  position: absolute;
-  height: 30px;
-  width: 20px;
-  right: 10px;
-  top: 10px;
-}
