@@ -42,7 +42,7 @@ h1,h2,p,ul,input{
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
@@ -98,10 +98,12 @@ header {
 main {
   width: 100%;
   height: 100%;
+  height: auto;
   background: #340180;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 0 50px 0;
 }
 
 .sectionOne {
@@ -119,7 +121,7 @@ main {
 
 .containerInput {
   width: 40%;
-  font-size: 20px;
+  font-size: 25px;
   display: flex;
   align-items: center;
 }
@@ -127,9 +129,10 @@ main {
 .containerInput input {
   border-radius: 6px;
   border: none;
-  height: 22px;
+  height: 40px;
   background: white;
   color: black;
+  font-size: 16px;
 }
 
 .buttonInputs {
@@ -170,13 +173,13 @@ hr {
 
 select#filter {
   height: 100%;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .containerCard {
   width: 80%;
-  min-height: 80%;
-  max-height: 80%;
+  min-height: 300px;
+  max-height: 300px;
   background: #210151;
   border-radius: 80px;
   display: flex;
@@ -186,8 +189,8 @@ select#filter {
 
 ul {
   width: 90%;
-  min-height: 80%;
-  max-height: 80%;
+  min-height: 260px;
+  max-height: 260px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -223,7 +226,7 @@ li {
 .containerTextCard {
   min-width: 70%;
   display: flex;
-  font-size: 25px;
+  font-size: 32px;
   gap: 5px;
 }
 
@@ -232,8 +235,8 @@ p.titleTask {
 }
 
 .checkbox {
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 6%;
   background: none;
   color: transparent;
 }
@@ -246,4 +249,206 @@ footer {
   font-size: 25px;
   font-weight: 600;
   background-color: #c1a8ff;
+}
+
+@media (max-width: 1279px) {
+  .containerCard {
+    width: 80%;
+    min-height: 250px;
+    max-height: 250px;
+    background: #210151;
+    border-radius: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .inputs {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+  }
+
+  .containerInput {
+      width: 40%;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+  }
+
+  .containerInput input {
+      border-radius: 6px;
+      border: none;
+      height: 30px;
+      background: white;
+      color: black;
+      font-size: 14px;
+  }
+
+  button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1.2em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+
+  .textCount {
+    font-size: 35px;
+    color: #fff40e;
+    font-weight: 700;
+  }
+
+  select#filter {
+    height: 100%;
+    font-size: 16px;
+  }
+
+  .containerCard {
+    width: 80%;
+    min-height: 250px;
+    max-height: 250px;
+    background: #210151;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul {
+    width: 90%;
+    min-height: 220px;
+    max-height: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+  }
+
+  .containerTextCard {
+    min-width: 70%;
+    display: flex;
+    font-size: 26px;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 920px) {
+  .inputs {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+
+  .containerCard {
+    width: 80%;
+    min-height: 320px;
+    max-height: 320px;
+    background: #210151;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul {
+      width: 90%;
+      min-height: 295px;
+      max-height: 295px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 100%;
+    height: auto;
+    background: #340180;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0 10% 0;
+  }
+
+  .inputs {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+  }
+
+  .containerInput {
+      width: 100%;
+      font-size: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .textCount {
+      font-size: 25px;
+      color: #fff40e;
+      font-weight: 700;
+      text-align: center;
+  }
+
+  .textFilter {
+      font-size: 25px;
+      font-weight: 700;
+  }
+
+  .status {
+      height: 25px;
+      width: 25px;
+      border-radius: 50%;
+      background: #f14d07;
+  }
+
+  .containerTextCard {
+    min-width: 70%;
+    display: flex;
+    font-size: 18px;
+    gap: 5px;
+  }
+
+  .checkbox {
+      height: 20px;
+      width: 6%;
+      background: none;
+      color: transparent;
+  }
+}
+
+@media (max-width: 480px) {
+  .textCount {
+    font-size: 20px;
+    color: #fff40e;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .containerCard {
+    width: 90%;
+    min-height: 320px;
+    max-height: 320px;
+    background: #210151;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .checkbox {
+    height: 20px;
+    width: 7%;
+    background: none;
+    color: transparent;
+  }
 }
