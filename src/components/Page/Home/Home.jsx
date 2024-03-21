@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import logoReact from '../../../assets/React-icon.png'
 import { Header } from '../../Layouts/Header/Header'
 import { Main } from '../../Layouts/Main/Main'
@@ -6,24 +6,47 @@ import { Footer } from '../../Layouts/Footer/Footer'
 import { Filter } from '../../Filter/Filter'
 import { Tasks } from '../../Tasks/Tasks'
 import { ItemTaks } from '../../ItemTaks/ItemTaks'
-
+import { tasksContext } from '../../Context/Context';
 
 
 export const Home = () => {
 
   const titleRef = useRef('');
   const taskRef = useRef('');
-  const [tasks, setTasks] = useState([]);
+  const context = useContext(tasksContext)
 
-  let counter = useRef(1);
+  const counter = useRef(1);
+  const [checked, setChecked] = useState(false);
+  const [styleChecked, setStyleChecked] = useState('status');
 
   const addTask = () => {
     const title = titleRef.current.value;
     const task = taskRef.current.value;
     const id = counter.current++;
-    setTasks([...tasks, { id, title, task }]);
+    const newTasks = {
+    id: id, 
+    title: title,
+    description: task,
+    state:false
+    };
+    let listTasks = [...context.tasks,newTasks]
+    context.setTasks(listTasks)
     titleRef.current.value = '';
     taskRef.current.value = '';
+  };
+
+  const clickChecked = (id) => {
+    const updatedTasks = context.tasks.map(task => {
+      if (task.id === id) {
+        const style = styleChecked === 'status'
+        ? setStyleChecked('trueStatus')
+        : setStyleChecked('status')
+        return { ...task, state: !task.state, task.style:style };
+      }
+      return task;
+    });
+    context.setTasks(updatedTasks);
+
   };
 
   return (
@@ -57,11 +80,15 @@ export const Home = () => {
           </div>
           <div className="containerCard">
             <Tasks>
-              {tasks.map((task) => (
+              {context.tasks.map((task) => (
                 <ItemTaks
                   key={task.id}
+                  id={task.id}
+                  style={styleChecked}
                   title={task.title}
-                  description={task.task}
+                  description={task.description}
+                  status={checked}
+                  checked={clickChecked}
                 />
               ))}
             </Tasks>

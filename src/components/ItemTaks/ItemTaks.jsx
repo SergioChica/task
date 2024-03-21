@@ -1,15 +1,15 @@
 import React from 'react'
 
-export const ItemTaks = ({title,description}) => {
+export const ItemTaks = ({style,title,description,status,checked}) => {
   return (
     <>
     <li>
-      <div className="status"></div>
+      <div className={style}></div>
       <div className="containerTextCard">
         <p className='titleTask'>{title}:</p>  
         <p className='describeTask'>{description}</p>  
       </div>
-      <input type="checkbox" name="" id="" className='checkbox' />
+      <input type="checkbox" checked={status} onChange={checked} id="" className='checkbox' />
     </li>
     </>
   )
