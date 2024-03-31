@@ -1,12 +1,12 @@
 import React from 'react'
 
-export const Filter = ({value1,value2,value3}) => {
+export const Filter = ({select,value}) => {
   return (
     <label>
-      <select name="filter" id="filter">
-          <option value={value1}>Todas las tareas</option>
-          <option value={value2}>Pendientes</option>
-          <option value={value3}>Resueltas</option>
+      <select value={value} onChange={select}>
+          <option value='allTask' >Todas las tareas</option>
+          <option value="pendingTask" >Pendientes</option>
+          <option value='completeTask' >Resueltas</option>
       </select>
     </label>
   )
