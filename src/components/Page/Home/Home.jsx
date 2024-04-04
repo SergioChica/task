@@ -64,11 +64,11 @@ export const Home = () => {
 
         // Creamos una condicional para aumentar o disminuir la cantindad de tareas completas y pendientes
         if (newChecked) {
-          setCompletedCount(prevCount => prevCount + 1);// Creamos una funcion flecha para aumentar el contdaor de tareas completadas
-          setPendingCount(prevCount => prevCount - 1);// Creamos una funcion flecha para disminuir el contdaor de tareas pendientes
+          setCompletedCount(complete => complete + 1);// Creamos una funcion flecha para aumentar el contdaor de tareas completadas
+          setPendingCount(pending => pending - 1);// Creamos una funcion flecha para disminuir el contdaor de tareas pendientes
         } else {
-          setCompletedCount(prevCount => prevCount - 1);// Creamos una funcion flecha para disminuir el contdaor de tareas completadas
-          setPendingCount(prevCount => prevCount + 1);// Creamos una funcion flecha para aumentar el contdaor de tareas pendientes
+          setCompletedCount(complete => complete - 1);// Creamos una funcion flecha para disminuir el contdaor de tareas completadas
+          setPendingCount(pending => pending + 1);// Creamos una funcion flecha para aumentar el contdaor de tareas pendientes
         }
         return { ...task, checked: newChecked, style: newStyle };// Retornamos las tareas anteriores y las nuevas con los nuevos parametros asignados
       }
@@ -117,7 +117,7 @@ export const Home = () => {
         <section className="sectionTwo">
           <div className="containerFilter">
             <p className='textFilter'>Filtrar:</p>
-            <Filter value={viewTask} select={e => setViewTask(e.target.value)} />
+            <Filter value={viewTask} select={text => setViewTask(text.target.value)} />
           </div>
           <div className="containerCard">
             <Tasks>
